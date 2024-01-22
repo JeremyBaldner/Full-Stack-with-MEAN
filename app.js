@@ -28,7 +28,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/travel', travelRouter);
 app.use('/about', aboutRouter);
@@ -36,6 +35,7 @@ app.use('/contact', contactRouter);
 app.use('/meals', mealsRouter);
 app.use('/news', newsRouter);
 app.use('/rooms', roomsRouter);
+app.use('*', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
