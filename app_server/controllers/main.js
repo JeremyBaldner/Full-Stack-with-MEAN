@@ -1,5 +1,10 @@
+const fs = require('fs');
+const latestNews = JSON.parse(fs.readFileSync('./data/news/latestNews.json', 'utf8'));
+const links = JSON.parse(fs.readFileSync('./data/links.json', 'utf8'));
+
 const index = (req, res) => {
-    res.render('index', {title: 'Travlr Getaways', highlight_main: true});
+    pageTitle = 'Travlr Getaways'
+    res.render('index', {title: pageTitle, latestNews, links, highlight_main: true});
 };
 
 module.exports = {

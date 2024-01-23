@@ -1,5 +1,6 @@
 const contact = (req, res) => {
-    res.render('contact', {title: 'Travlr Getaways - Contacts', highlight_contact: true});
+    pageTitle = 'Travlr Getaways - Contacts'
+    res.render('contact', {title: pageTitle, highlight_contact: true});
 };
 
 module.exports = {
