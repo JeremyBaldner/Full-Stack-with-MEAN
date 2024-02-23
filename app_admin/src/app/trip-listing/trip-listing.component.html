@@ -1,8 +1,8 @@
 <div>
-  <button (click)="addTrip()" class="btn btn-info mb-3 mx-3" style="width: 10rem">Add Trip</button>
+  <button (click)="addTrip()" class="btn btn-info btn-lg mx-3" style="width: 10rem">Add Trip</button>
 </div>
 <div class="card-group">
-  <div *ngFor="let trip of trips">
-    <app-trip-card [trip]="trip" class="card-deck mt-2"></app-trip-card>
+  <div *ngFor="let trip of trips" class="my-3">
+    <app-trip-card [trip]="trip" class="card-deck"></app-trip-card>
   </div>
 </div>

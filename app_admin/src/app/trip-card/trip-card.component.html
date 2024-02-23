@@ -8,9 +8,10 @@
     </p>
     <p class="card-text" [innerHTML]="trip.description"></p>
   </div>
-  <div class="text-center">
-    <div>
-      <button (click)="editTrip(trip)" class="btn btn-info" style="width: 10rem">Edit</button>
+  <div>
+    <div class="btn-toolbar" role="toolbar">
+      <button (click)="editTrip(trip)" class="btn btn-outline-info mb-3 mx-auto" style="width: 6rem">Edit</button>
+      <button (click)="deleteTrip(trip)" class="btn btn-outline-danger mb-3 mx-auto" style="width: 6rem">Delete</button>
     </div>
   </div>
 </div>

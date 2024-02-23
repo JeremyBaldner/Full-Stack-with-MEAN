@@ -1,6 +1,6 @@
 <div class="col-md-3">
-  <h2 class="text-center">Edit Trip</h2>
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <h2 class="text-center">Delete Trip</h2>
+  <form [formGroup]="deleteForm">
 
     <div class="form-group">
       <label>Code:</label>
@@ -65,7 +65,16 @@
         <div *ngIf="f.code.errors.required">Description is required</div>
       </div>
     </div>
+  </form>
+</div>
 
-    <button type="submit" class="btn btn-outline-info btn-lg my-3" style="width: 10rem">Save</button>
+<div>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <h1 class="text-center"> Are you sure you want to delete this trip?</h1>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-danger btn-lg" style="width: 15rem">Yes</button>
+    </div>
   </form>
 </div>
