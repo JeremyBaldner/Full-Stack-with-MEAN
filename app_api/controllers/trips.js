@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-const Trips = mongoose.model('trips');
+const Trip = mongoose.model('trips');
 const User = mongoose.model('users');
 
 //GET: /trips - list all trips
 const tripsList = async (req, res) => {
-    Trips
+    Trip
         .find({})  // empty filter returns all trips
         .exec((err, trips) => {
             if (!trips) {
@@ -25,7 +25,7 @@ const tripsList = async (req, res) => {
 
 // GET: /trips/code - returns a single trip
 const tripsFindCode = async (req, res) => {
-    Trips
+    Trip
         .find({'code': req.params.tripCode})
         .exec((err, trip) => {
             if (!trip) {
@@ -48,7 +48,7 @@ const tripsFindCode = async (req, res) => {
 const tripsAddTrip = async (req, res) => {
     getUser(req, res,
         (req, res) => {
-            Trips
+            Trip
                 .create({
                     code: req.body.code,
                     name: req.body.name,
@@ -72,14 +72,14 @@ const tripsAddTrip = async (req, res) => {
                 }
             );
         }
-    )
+    );
 }
 
 const tripsUpdateTrip = async (req, res) => {
     console.log(req.body);
     getUser(req, res,
         (req, res) => {
-            Trips
+            Trip
                 .findOneAndUpdate({ 'code': req.params.tripCode }, {
                     code: req.body.code,
                     name: req.body.name,
@@ -109,21 +109,27 @@ const tripsUpdateTrip = async (req, res) => {
                 }
             );
         }
-    )
+    );
 }
 
 const deleteTrip = async (req, res) => {
-    Trips.deleteOne({ 'code': req.params.tripCode }).then((result) => {
-        console.log(result);
-    })
-    .then(trip => {
-        if (trip) {
-            return res
-                .status(404)
-                .send({ message: "Trip not deleted with code " + req.params.tripCode });
+    getUser(req, res,
+        (req, res) => {
+            Trip.deleteOne({ 'code': req.params.tripCode }).then((result) => {
+                console.log(result);
+            })
+            .then(trip => {
+                if (trip) {
+                    return res
+                        .status(404)
+                        .send({ message: "Trip not deleted with code " + req.params.tripCode });
+                }
+                return res
+                .status(200)
+                .send({ message: "Trip deleted"});
+            })
         }
-        return res.status(200);
-        })
+    );
 }
 
 const getUser = (req, res, callback) => {

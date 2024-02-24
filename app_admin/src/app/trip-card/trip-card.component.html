@@ -9,7 +9,7 @@
     <p class="card-text" [innerHTML]="trip.description"></p>
   </div>
   <div>
-    <div class="btn-toolbar" role="toolbar">
+    <div class="btn-toolbar" role="toolbar" *ngIf="isLoggedIn()">
       <button (click)="editTrip(trip)" class="btn btn-outline-info mb-3 mx-auto" style="width: 6rem">Edit</button>
       <button (click)="deleteTrip(trip)" class="btn btn-outline-danger mb-3 mx-auto" style="width: 6rem">Delete</button>
     </div>
