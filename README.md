@@ -1,4 +1,4 @@
-# Full Stck Web App
+# Full Stack Web App
 ## Architecture
 **Compare and contrast the types of front-end development used in the full stack project:** <br>
 **Express HTML**: Express is used to render the HTML templates for the multi-page application. Express utilizes the model–view–controller (MVC) architecture to show the correct template based on the route provided. The template was made up of HTML and CSS and dynamically compiled by Handlebars. This allows for fast and reusable webpage templates.<br>
